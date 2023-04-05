@@ -10,16 +10,28 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud-connection'
+    organization: 'eoingalvin2'
+    scannerMode: 'Other'
+
+- task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    jdkArchitectureOption: 'x64'
+    goals: 'clean package'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)'
@@ -30,15 +42,6 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'mavenBuildArtifact'
     publishLocation: 'Container'
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'sonarcloud-connection'
-    organization: 'eoingalvin2'
-    scannerMode: 'Other'
-- task: SonarCloudAnalyze@1
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerHub'
