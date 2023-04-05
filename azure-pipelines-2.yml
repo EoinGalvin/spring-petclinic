@@ -49,5 +49,5 @@ steps:
     WebAppName: 'eoinDocker'
     DockerNamespace: 'eoingalvin2'
     DockerRepository: 'eoinpetclinic1'
-    DockerImageTag: 'latest'
+    DockerImageTag: '34'
     StartupCommand: 'java -jar target/spring-boot-docker'
