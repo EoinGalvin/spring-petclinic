@@ -40,7 +40,14 @@ steps:
     containerRegistry: 'dockerHub'
     repository: 'eoingalvin2 / eoinpetclinic1'
     command: 'push'
-    
+- task: AzureAppServiceManage@0
+  inputs:
+    azureSubscription: 'Azure for Students (d6bc2b19-a9f0-4ec3-a145-4a25893ce50f)'
+    Action: 'Start Azure App Service'
+    WebAppName: 'eoinDocker'
+    SpecifySlotOrASE: true
+    ResourceGroupName: 'EoinResourceGroup'
+    Slot: 'production'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
