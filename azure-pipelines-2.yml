@@ -20,7 +20,15 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean package'
-
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud-connection'
+    organization: 'eoingalvin2'
+    scannerMode: 'Other'
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: Docker@2
   inputs:
     containerRegistry: 'dockerHub'
@@ -40,6 +48,5 @@ steps:
     WebAppName: 'eoinDocker'
     DockerNamespace: 'eoingalvin2'
     DockerRepository: 'eoinpetclinic1'
-    DockerImageTag: '28'
     StartupCommand: 'java -jar target/spring-boot-docker'
   
