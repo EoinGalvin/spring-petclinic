@@ -41,3 +41,5 @@ steps:
     DockerNamespace: 'eoingalvin2'
     DockerRepository: 'eoinpetclinic1'
     DockerImageTag: '28'
+    StartupCommand: 'java -jar target/spring-boot-docker'
+  
