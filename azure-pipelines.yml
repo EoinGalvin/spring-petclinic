@@ -16,9 +16,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean package'
+
 - task: CopyFiles@2
   inputs:
-    Contents: '**/*.war'
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: '**/target/spring-boot-docker.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
