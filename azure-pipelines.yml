@@ -1,6 +1,6 @@
 # Build Pipeline
 trigger:
-- main
+- azure-pipelines-test
 
 pool:
   vmImage: ubuntu-latest
