@@ -32,4 +32,12 @@ steps:
     containerRegistry: 'dockerHub'
     repository: 'eoingalvin2 / eoinpetclinic1'
     command: 'push'
-  
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(10)(d6bc2b19-a9f0-4ec3-a145-4a25893ce50f)'
+    appType: 'webAppContainer'
+    WebAppName: 'eoinDocker'
+    DockerNamespace: 'eoingalvin2'
+    DockerRepository: 'eoinpetclinic1'
+    DockerImageTag: '28'
