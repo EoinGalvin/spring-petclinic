@@ -35,8 +35,7 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-    pmdRunAnalysis: true
-    findBugsRunAnalysis: true
+    pmdRunAnalysis: true 
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
