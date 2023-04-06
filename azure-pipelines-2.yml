@@ -30,13 +30,13 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     codeCoverageToolOption: 'JaCoCo'
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
     pmdRunAnalysis: true
     findBugsRunAnalysis: true
-
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
