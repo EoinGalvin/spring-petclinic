@@ -35,7 +35,10 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
-    pmdRunAnalysis: true 
+    pmdRunAnalysis: true
+    findBugsRunAnalysis: true
+    spotBugsRunAnalysis: true
+    checkStyleRunAnalysis: true
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
