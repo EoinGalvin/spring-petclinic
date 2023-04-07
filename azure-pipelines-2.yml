@@ -37,7 +37,7 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
     pmdRunAnalysis: true
-    findBugsRunAnalysis: true
+    findBugsRunAnalysis: false
     spotBugsRunAnalysis: true
     checkStyleRunAnalysis: true
 - task: SonarCloudPublish@1
